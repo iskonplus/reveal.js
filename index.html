@@ -1,40 +1,376 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
+
 	<body>
+
 		<div class="reveal">
+
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Pseudo classes and pseudo elements in CSS</h1>
+					<p>
+						<small>Pseudo <a href="#pseudo_classes">classes.</a>  Pseudo <a href="#pseudo_elements">elements.</a></small>
+					</p>
+				</section>
+
+				<section id="pseudo_classes">
+					<section>
+						<h2>Pseudo-classes.</h2>
+						<p>A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s)</p>
+						<small class="hint">Use the <em>Space</em> key to navigate through all slides.</small>
+						<br>
+						<a href="#" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="80" height="100" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+
+					<section>
+						<h2>For example:</h2>
+						<p>what color the active link will have or when hovering over it.</p>
+					</section>
+
+					<section>
+						<h2>How does a pseudo-class differ from a regular class?</h2>
+						<ul>
+							<li>We don't need to invent the names of pseudo-classes ourselves, we just need to know them.</li>
+							<li>The name of the pseudo-class is added with a colon to the selector, while the name of the regular class is specified inside the HTML markup tag.</li>
+						</ul>
+					</section>
+
+					<section id="fragments">
+						<h3>Pseudo-classes can be divided into several groups</h3>
+						<ul class="fragment">
+							<li>Pseudo-classes for links.</li>
+							<li class="fragment">Pseudo-classes for input.</li>
+							<li class="fragment">Pseudo-class for filter and sample.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Pseudo-classes for links:</h3>
+						<ul>
+							<li>:hover - when hovering the cursor.</li>
+							<li>:link - link not visited.</li>
+							<li>:active - state when the link is clicked.</li>
+							<li>:visited - visited link.</li>
+						</ul>
+					</section>
+
+					<section id="fragments">
+						<h3>The idea is that each link state has its own CSS styles.</h3>
+						<p data-id="code-title"  class="fragment">For example, we can change the link color to red when the cursor hovers over it.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							a:hover{
+								color: red;
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Pseudo-classes for input:</h3>
+						<ul>
+							<li>:focus - changes the style for the field that received focus.</li>
+							<li>:checked - applies to the checkbox and radio elements of the form when they are in the enabled state.</li>
+							<li>:empty - represents an empty element.</li>
+							<li>:invalid - if not valid input.</li>
+							<li>:valid - if valid input.</li>
+						</ul>
+					</section>
+
+					<section id="fragments">
+						<h3>And now examples...</h3>
+					</section>
+
+					<section id="fragments">
+						<h3>:focus</h3>
+						<p data-id="code-title"  class="fragment">By default, the browser makes an outline inside the input that falls into focus. We cancel the default stroke and set our own styles.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							input:focus {
+								outline: none;
+								border: 2px solid green;
+							}
+						</code></pre>
+					</section>
+
+					<section id="fragments">
+						<h3>:empty</h3>
+						<p data-id="code-title"  class="fragment">Represents an empty element, such as " span".</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							span:empty {
+								background: blue;
+								width: 30px;
+								height: 30px;
+								display: block;
+							}
+						</code></pre>
+					</section>
+
+					<section id="fragments">
+						<h3>:valid</h3>
+						<p data-id="code-title"  class="fragment">If validation was successful, we will switch the field color to green.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							input:valid {
+
+								background: green;
+							
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Pseudo-classes for filter and sample:</h3>
+						<ul>
+							<li>:first-child - sets CSS styles for the first child element..</li>
+							<li>:last-child - sets CSS styles for the last child element.</li>
+							<li>:nth-child - accessing an element using an ordinal number.</li>
+						</ul>
+					</section>
+
+					<section id="fragments">
+						<h3>And again examples...</h3>
+					</section>
+
+					<section id="fragments">
+						<h3>:first-child</h3>
+						<p data-id="code-title"  class="fragment">Add a gray background to the first item in the list.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							&lt;ul&gt;
+								&lt;li&gt;child 1&lt;/li&gt;
+								&lt;li&gt;child 2&lt;/li&gt;
+								&lt;li&gt;child 3&lt;/li&gt;
+								&lt;li&gt;child 4&lt;/li&gt;
+								&lt;li&gt;child 5&lt;/li&gt;
+							&lt;/ul&gt;
+
+							li:first-child {
+								background: grey;
+							}
+						</code></pre>
+					</section>
+
+					<section id="fragments">
+						<h3>:nth-child</h3>
+						<p data-id="code-title"  class="fragment">Let's take the same list as an example. What should I do if I need to select the second item in the list instead of the first or last one?</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+
+							// the second element is white
+							li:nth-child(2) {
+								color: #fff;
+							 }
+							
+							// the third element is black
+							 li:nth-child(3) {
+								 color: #000;
+							 }
+
+							 // even elements are gray
+							 li:nth-child(even) {
+								 color: #ccc;
+							 }
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>In fact, there are many more pseudo-classes!</h2>
+						<p>The full list can be found <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">here.</a></p>
+						<br>
+						<a href="#/1">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1); transform: rotate(180deg);" width="80" height="100" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow">
+						</a>
+					</section>
+				</section>
+
+				
+				<!-- ------------------------------------------------------------------------ -->
+
+
+				<section id="pseudo_elements">
+					<section>
+						<h2>Pseudo-elements.</h2>
+						<p>A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element(s).</p>
+						<small class="hint">Use the <em>Space</em> key to navigate through all slides.</small>
+						<br>
+						<a href="#" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="80" height="100" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+
+					<section>
+						<h2>For example:</h2>
+						<p>can be used to change the font of the first line of a paragraph.</p>
+					</section>
+
+					<section>
+						<h2>It is important to remember!</h2>
+						<p>You can use only one pseudo-element in a selector. It must appear after the simple selectors in the statement.</p>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+							selector::pseudo-element {
+								property: value;
+							  }
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Note</h2>
+						<p>As a rule, double colons (::) should be used instead of a single colon (:). This distinguishes pseudo-classes from pseudo-elements. However, since this distinction was not present in older versions of the W3C spec, most browsers support both syntaxes for the original pseudo-elements.</p>
+					</section>
+
+					<section id="fragments">
+						<h3>pseudo elements can be divided into several groups</h3>
+						<ul class="fragment">
+							<li>Pseudo-elements for text effects.</li>
+							<li class="fragment">Pseudo-elements for generated content.</li>
+							<li class="fragment">Pseudo-elements for tools for highlighting and highlighting.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Pseudo-elements for text effects:</h3>
+						<ul>
+							<li>::first-letter - applies styles to the first letter of the first.</li>
+							<li>::first-line - applies styles to the first line of a block-level element.</li>
+						</ul>
+					</section>
+
+					<section id="fragments">
+						<!-- <h3>The idea is that each link state has its own CSS styles.</h3> -->
+						<p data-id="code-title">For example, make the first letter of each paragraph red and large.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							p::first-letter {
+								color: red;
+								font-size: 130%;
+							  }
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Pseudo-elements for generated content:</h3>
+						<ul>
+							<li>::before - creates a pseudo-element that is the first child of the selected element.</li>
+							<li>::after - creates a pseudo-element that is the last child of the selected element.</li>
+							<li>::placeholder - represents the placeholder text in an &lt;input&gt; or &lt;textarea&gt; element.</li>
+							<li>::marker - selects the list item marker field.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Examples...</h3>
+					</section>
+
+					<section id="fragments">
+						<h3>::before</h3>
+						<p data-id="code-title" class="fragment">Add a heart before links.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							a::before {
+								content: "♥";
+							  }ont-size: 130%;
+							  
+						</code></pre>
+					</section>
+
+					<section id="fragments">
+						<h3>::placeholder</h3>
+						<p data-id="code-title" class="fragment">Specify the parameters of the text placeholder.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							::placeholder {
+								color: blue;
+								font-size: 1.5em;
+							  }
+							  
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h3>Pseudo-elements for tools for highlighting and highlighting:</h3>
+						<ul>
+							<li>::selection - applies styles to the part of a document that has been highlighted by the user.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Without examples not where...</h3>
+					</section>
+
+					<section id="fragments">
+						<h3>::selection</h3>
+						<p data-id="code-title" class="fragment">Replace the background when selecting.</p>
+						<pre data-id="code-animation" class="fragment"><code class="hljs" data-trim data-line-numbers>
+							::selection {
+								background: cyan;
+							  }
+							  
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>In fact, there are many more pseudo elements!</h2>
+						<p>The full list can be found <a href="https://developer.mozilla.org/ru/docs/Web/CSS/Pseudo-elements">here.</a></p>
+						<br>
+						<a href="#/2">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1); transform: rotate(180deg);" width="80" height="100" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow">
+						</a>
+					</section>
+				</section>
+
+
+
+
+
+<!-- -------------------------------------------------------- -->
+
+
+
+
+
+
+
 			</div>
+
 		</div>
 
 		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
 		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
 			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
 			});
+
 		</script>
+
 	</body>
 </html>
+
